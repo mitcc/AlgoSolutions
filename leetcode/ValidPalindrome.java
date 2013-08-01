@@ -20,19 +20,11 @@ public class ValidPalindrome {
         while(i < j) {
         	char ci = s.charAt(i);
         	char cj = s.charAt(j);
-        	while(ci < 48 ||( ci > 57 && ci < 65) || (ci > 90 && ci < 97) || ci > 122) {
+        	if(ci < 48 ||( ci > 57 && ci < 65) || (ci > 90 && ci < 97) || ci > 122) 
         		i++;
-        		if(i > j)
-        			break;
-        		ci = s.charAt(i);
-        	}
-        	while(cj < 48 || (cj > 57 && cj < 65) || (cj > 90 && cj < 97) || ci > 122) {
+        	else if(cj < 48 || (cj > 57 && cj < 65) || (cj > 90 && cj < 97) || ci > 122) 
         		j--;
-        		if(j < i)
-        			break;
-        		cj = s.charAt(j);
-        	}
-        	if(ci != cj && ci != ((cj <= 90) ? (cj + 32) : (cj - 32)))
+        	else if(ci != cj && ci != ((cj <= 90) ? (cj + 32) : (cj - 32)))
         		return false;
         	else {
         		i++;
@@ -42,7 +34,8 @@ public class ValidPalindrome {
         return true;
     }
 	public static void main(String[] args) {
-		String s = ".,";
+//		String s = ".,";
+		String s = "A man, a plan, a canal: Panama";
 		System.out.println(new ValidPalindrome().isPalindrome(s));
 	}
 }
