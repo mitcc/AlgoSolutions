@@ -13,7 +13,7 @@
 package info.mitcc.leetcode;
 
 public class CountAndSay {
-	public String countAndSay(int n) {
+	public String countAndSay(int n) {// need to be optimized!!!
         // Start typing your Java solution below
         // DO NOT write main() function
 		if(n == 1) 
