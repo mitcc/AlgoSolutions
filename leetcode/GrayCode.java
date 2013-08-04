@@ -58,6 +58,25 @@ public class GrayCode {
 		}
 		return list;
 	}*/
+	
+/*	public ArrayList<Integer> grayCode(int n) {
+    	ArrayList<Integer> list = new ArrayList<Integer>();
+        if (n <= 1) {
+            list.add(0);
+            if (n == 1) list.add(1);
+            return list;
+        }
+
+        ArrayList<Integer> prevList = grayCode(n - 1);
+        int highest_bit = 1 << (n - 1);
+        for (int i = prevList.size() - 1; i >= 0; i--) {
+            list.add(prevList.get(i) + highest_bit);
+        }
+
+        prevList.addAll(list);
+        return prevList;
+    }*/
+	
 	public ArrayList<Integer> grayCode(int n) {
 		int len = 1 << n;
 		ArrayList<Integer> list = new ArrayList<Integer>();
