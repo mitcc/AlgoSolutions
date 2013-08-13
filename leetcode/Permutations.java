@@ -10,7 +10,7 @@ package info.mitcc.leetcode;
 import java.util.*;
 
 public class Permutations {
-  public ArrayList<ArrayList<Integer>> permute(int[] num) {
+	public ArrayList<ArrayList<Integer>> permute(int[] num) {
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> item = new ArrayList<Integer>();
 		item.add(num[0]);
@@ -28,4 +28,9 @@ public class Permutations {
 		}
 		return result;
     }
+	
+	public static void main(String[] args) {
+		int[] num = {1, 2, 3};
+		System.out.println(new Permutations().permute(num));
+	}
 }
