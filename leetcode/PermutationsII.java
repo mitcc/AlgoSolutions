@@ -13,34 +13,24 @@ public class PermutationsII {
 	public ArrayList<ArrayList<Integer>> permute(int[] num) {
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> item = new ArrayList<Integer>();
-		HashSet<ArrayList<Integer>> hashSet = new HashSet<ArrayList<Integer>>();
-		int len = num.length;
-		for(int i = 0; i < len; i++)
-			item.add(num[i]);
+		item.add(num[0]);
 		result.add(item);
-		
-		int size = 1;
-		for(int i = 0; i < len; i++) {
-			size = result.size();
-			for(int j = 0; j < size; j++) {
-				for(int k = i + 1; k < len; k++) {
+		for(int i = 1; i < num.length; i++) {
+			HashSet<ArrayList<Integer>> list = new HashSet<ArrayList<Integer>>();
+			for(int j = 0; j < result.size(); j++) {
+				for(int k = 0; k < result.get(j).size() + 1; k++) {
 					ArrayList<Integer> temp = new ArrayList<Integer>(result.get(j));
-					int t = temp.get(i);
-					if(t == temp.get(k)) {
-						continue;
-					}
-					temp.set(i, temp.get(k));
-					temp.set(k, t);
-					if(hashSet.add(temp))
-						result.add(temp);
+					temp.add(k, num[i]);
+					list.add(temp);
 				}
 			}
+			result = new ArrayList<ArrayList<Integer>>(list);
 		}
 		return result;
-    }
+    	}
 
 	public static void main(String[] args) {
-		int[] num = {1, 1, 3};
+		int[] num = {1,1,1,1,0};
 		System.out.println(new PermutationsII().permute(num));
 	}
 }
