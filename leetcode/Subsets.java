@@ -49,8 +49,26 @@ public class Subsets {
 		return result;
 	}*/
 	
+/*	public ArrayList<ArrayList<Integer>> subsets(int[] S) {
+		Arrays.sort(S);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		result.add(new ArrayList<Integer>());
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		list.add(S[0]);
+		result.add(list);
+		for(int i = 1; i < S.length; i++) {
+			int size = result.size();
+			for(int j = 0; j < size; j++) {
+				ArrayList<Integer> pre = new ArrayList<Integer>(result.get(j));
+				pre.add(S[i]);
+				result.add(pre);
+			}
+		}
+		return result;
+	}*/
 	
 	ArrayList<ArrayList<Integer>> result = null;
+	
 	public void dfs(int[] S, int pos, ArrayList<Integer> temp) {
 		for(int i = pos; i < S.length; i++) {
 			temp.add(S[i]);
@@ -59,7 +77,7 @@ public class Subsets {
 			temp.remove(temp.size() - 1);
 		}
 	}
-	
+
 	public ArrayList<ArrayList<Integer>> subsets(int[] S) {
 		Arrays.sort(S);
 		result = new ArrayList<ArrayList<Integer>>();
