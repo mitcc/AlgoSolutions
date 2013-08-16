@@ -53,10 +53,7 @@ public class Subsets {
 		Arrays.sort(S);
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		result.add(new ArrayList<Integer>());
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(S[0]);
-		result.add(list);
-		for(int i = 1; i < S.length; i++) {
+		for(int i = 0; i < S.length; i++) {
 			int size = result.size();
 			for(int j = 0; j < size; j++) {
 				ArrayList<Integer> pre = new ArrayList<Integer>(result.get(j));
