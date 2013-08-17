@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class SubsetsII {
-	public String getBinary(int num, int len) {
+/*	public String getBinary(int num, int len) {
 		String str = Integer.toBinaryString(num);
 		String s = "";
 		if(str.length() < len)
@@ -47,10 +47,37 @@ public class SubsetsII {
 			list.add(temp);
 		}
         return new ArrayList<ArrayList<Integer>>(list);
+    }*/
+	
+	public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] num) {
+		Arrays.sort(num);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		result.add(new ArrayList<Integer>());
+		int preSize = 0;
+		for(int i = 0; i < num.length; i++) {
+			if(i > 0 && num[i] == num[i - 1]) {
+				int newSize = result.size();
+				for(int j = preSize; j < newSize; j++) {
+					ArrayList<Integer> pre = new ArrayList<Integer>(result.get(j));
+					pre.add(num[i]);
+					result.add(pre);
+				}
+				preSize = newSize;
+			} else {
+				int size = result.size();
+				preSize = size;
+				for(int j = 0; j < size; j++) {
+					ArrayList<Integer> pre = new ArrayList<Integer>(result.get(j));
+					pre.add(num[i]);
+					result.add(pre);
+				}
+			}
+		}
+		return result;
     }
 	
 	public static void main(String[] args) {
-		int[] num = {1, 2, 2};
+		int[] num = {1, 2, 2, 2, 3};
 		System.out.println(new SubsetsII().subsetsWithDup(num));
 	}
 }
