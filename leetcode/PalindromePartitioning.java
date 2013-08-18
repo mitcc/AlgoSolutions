@@ -25,13 +25,13 @@ public class PalindromePartitioning {
         	result.add(temp);
         	return result;
         }
-        if(isPanlindrome(s)) {
+        if(isPalindrome(s)) {
         	temp = new ArrayList<String>();
         	temp.add(s);
         	result.add(temp);
         }
         for(int i = 1; i < s.length(); i++) {
-        	if(isPanlindrome(s.substring(0, i))) {
+        	if(isPalindrome(s.substring(0, i))) {
         		ArrayList<ArrayList<String>> list = partition(s.substring(i, s.length()));
         		temp = new ArrayList<String>();
         		int size = list.size();
@@ -45,7 +45,7 @@ public class PalindromePartitioning {
         return result;
     }
 	
-	public boolean isPanlindrome(String s) {
+	public boolean isPalindrome(String s) {
 		return new StringBuilder(s).reverse().toString().equals(s);
 	}
 	
