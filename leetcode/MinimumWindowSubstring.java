@@ -38,7 +38,8 @@ public class MinimumWindowSubstring {
 				count++;
 			
 			if(count == tLen) {
-				while(needToFound[S.charAt(begin)] == 0 || hasFound[S.charAt(begin)] > needToFound[S.charAt(begin)]) {
+				while(needToFound[S.charAt(begin)] == 0 || 
+						hasFound[S.charAt(begin)] > needToFound[S.charAt(begin)]) {
 					if(hasFound[S.charAt(begin)] > needToFound[S.charAt(begin)])
 						hasFound[S.charAt(begin)]--;
 					begin++;
