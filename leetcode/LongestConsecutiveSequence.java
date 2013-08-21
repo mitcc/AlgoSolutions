@@ -12,7 +12,7 @@ package info.mitcc.leetcode;
 import java.util.*;
 
 public class LongestConsecutiveSequence {
-/*	public int longestConsecutive(int[] num) {
+/*  public int longestConsecutive(int[] num) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         int max = 1;
         for(int i : num) {
@@ -27,7 +27,7 @@ public class LongestConsecutiveSequence {
         return max;
     }
 	
-	public int merge(HashMap<Integer, Integer> map, int left, int right) {
+    public int merge(HashMap<Integer, Integer> map, int left, int right) {
 		int upper = right + map.get(right) - 1;
 		int lower = left - map.get(left) + 1;
 		int len = upper - lower + 1;
@@ -36,7 +36,7 @@ public class LongestConsecutiveSequence {
 		return len;
 	}*/
 	
-	public int longestConsecutive(int[] num) {
+    public int longestConsecutive(int[] num) {
         int max = 0;    
         Set<Integer> hashSet = new HashSet<Integer>();
         for(int i : num)
