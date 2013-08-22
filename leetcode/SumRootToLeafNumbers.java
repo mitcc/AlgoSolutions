@@ -15,6 +15,15 @@
 
  * Return the sum = 12 + 13 = 25.
  */
+/**
+ * Definition for binary tree
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 package info.mitcc.leetcode;
 
 class TreeNode {
