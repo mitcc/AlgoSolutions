@@ -25,7 +25,7 @@ package info.mitcc.leetcode;
 import java.util.ArrayList;
 
 public class BinaryTreeMaximumPathSum {
-	/*int max;
+	int max;
 	public int maxPathSum(TreeNode root) {
 		max = Integer.MIN_VALUE;
 		maxSum(root);
@@ -39,9 +39,9 @@ public class BinaryTreeMaximumPathSum {
 		int subMax = Math.max(Math.max(root.val, L + R + root.val), root.val + Math.max(L, R));
 		max = Math.max(max, subMax);
 		return Math.max(root.val, root.val + Math.max(L, R));
-	}*/
+	}
 	
-	public int maxPathSum(TreeNode root) {
+	/*public int maxPathSum(TreeNode root) {
 		//pass the curmax in an array that contains only one value
 		ArrayList<Integer> curMax = new ArrayList<Integer>(1);
 		curMax.add(Integer.MIN_VALUE);
@@ -56,5 +56,5 @@ public class BinaryTreeMaximumPathSum {
 		int rightMax = Math.max(0, maxSubPath(root.right, curMax));
 		curMax.set(0, Math.max(curMax.get(0), root.val + leftMax + rightMax));
 		return Math.max(root.val + leftMax, root.val + rightMax);
-	}
+	}*/
 }
