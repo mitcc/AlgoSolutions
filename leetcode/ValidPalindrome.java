@@ -34,6 +34,8 @@ public class ValidPalindrome {
         return true;
     }
 	public static void main(String[] args) {
+		//
+		//
 //		String s = ".,";
 		String s = "A man, a plan, a canal: Panama";
 		System.out.println(new ValidPalindrome().isPalindrome(s));
