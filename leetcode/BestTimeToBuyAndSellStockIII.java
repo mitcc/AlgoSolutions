@@ -14,22 +14,22 @@ public class BestTimeToBuyAndSellStockIII {
 			return 0;
 		int[] leftMax = new int[prices.length];
 		int[] rightMax = new int[prices.length];
-		int result = 0;
 		
 		int min = prices[0];
 		leftMax[0] = 0;
 		for(int i = 1; i < prices.length; i++) {
 			min = Math.min(min, prices[i]);
-			leftMax[i] = Math.min(leftMax[i], prices[i] - min);
+			leftMax[i] = Math.max(leftMax[i - 1], prices[i] - min);
 		}
 		
 		int max = prices[prices.length - 1];
 		rightMax[prices.length - 1] = 0;
 		for(int i = prices.length - 2; i >= 0; i--) {
 			max = Math.max(max, prices[i]);
-			rightMax[i] = Math.max(rightMax[i], max - prices[i]);
+			rightMax[i] = Math.max(rightMax[i + 1], max - prices[i]);
 		}
 		
+		int result = 0;
 		for(int i = 0; i < prices.length; i++) {
 			result = Math.max(result, leftMax[i] + rightMax[i]);
 		}
@@ -37,7 +37,7 @@ public class BestTimeToBuyAndSellStockIII {
 	}
 	
 	public static void main(String[] args) {
-		int[] test = {1, 3, 2, 7, 6, 8, 9};
+		int[] test = {1, 2, 0, 1};
 		System.out.println(new BestTimeToBuyAndSellStockIII().maxProfit(test));
 	}
 }
