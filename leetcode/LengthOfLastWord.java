@@ -10,9 +10,10 @@
  * Given s = "Hello World",
  * return 5.
  */
+package info.mitcc.leetcode;
 
 public class LengthOfLastWord {
-    public int lengthOfLastWord(String s) {
+	public int lengthOfLastWord(String s) {
 		if(s.length() == 0)
             return 0;
         int end = s.length() - 1;
@@ -33,5 +34,5 @@ public class LengthOfLastWord {
 		if(arrays.length == 0)
 			return 0;
 		return arrays[arrays.length - 1].length();
-	}*/    
+	}*/
 }
