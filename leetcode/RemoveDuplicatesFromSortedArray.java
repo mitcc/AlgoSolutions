@@ -23,8 +23,8 @@ public class RemoveDuplicatesFromSortedArray {
     }*/
 
     public int removeDuplicates(int[] A) {
-        if(A.length == 0  || A.length == 1)
-            return A.length;
+        if(A.length == 0)
+            return 0;
         int index = 0;
         for(int i = 1; i < A.length; i++) {
             if(A[i] != A[index]) {
