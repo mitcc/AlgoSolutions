@@ -30,7 +30,7 @@ public class PermutationSequence {
             int div = (k - 1) / factor;
             sb.append(list.get(div));
             list.remove(div);
-            k = k - div * factor;
+            k = k - div * factor;// or: k = (k - 1) % factor + 1;
         }
         return sb.toString();
     }
