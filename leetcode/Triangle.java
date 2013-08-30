@@ -20,25 +20,4 @@ public class Triangle {
         }
         return dp[0][0];
     }
-	public static void main(String[] args) {
-		ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
-
-		ArrayList<Integer> list1 = new ArrayList<Integer>(), list2 = new ArrayList<Integer>(), 
-				list3 = new ArrayList<Integer>(), list4 = new ArrayList<Integer>();
-		list1.add(2);
-		list2.add(3);
-		list2.add(4);
-		list3.add(6);
-		list3.add(5);
-		list3.add(7);
-		list4.add(4);
-		list4.add(1);
-		list4.add(8);
-		list4.add(3);
-		list.add(list1);
-		list.add(list2);
-		list.add(list3);
-		list.add(list4);
-		System.out.println(new Triangle().minimumTotal(list));
-	}
 }
