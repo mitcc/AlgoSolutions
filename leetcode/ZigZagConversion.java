@@ -12,8 +12,8 @@
  * convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR". 
  */
 public class ZigZagConversion {
-    public String convert(String s, int nRows) {
-        if(nRows == 1)
+/*  public String convert(String s, int nRows) {
+        if(nRows <= 1)
             return s;
         int len = s.length();
         int zigZagCount = s.length() / (2 * nRows - 2);
@@ -28,6 +28,20 @@ public class ZigZagConversion {
                     if(j * (2 * nRows - 2) + 2 * nRows - 2 - i < s.length())
                         result += s.charAt(j * (2 * nRows - 2) + 2 * nRows - 2 - i);
                 }
+            }
+        }
+        return result;
+    }*/
+
+    public String convert(String s, int nRows) {
+        if(nRows <= 1)
+            return s;
+        String result = "";
+        for(int i = 0; i < nRows; i++) {
+            for(int j = 0; j * (2 * nRows - 2) + i < s.length(); j++) {
+                result += s.charAt(j * (2 * nRows - 2) + i);
+                if(i != 0 && i != nRows - 1 && (j + 1) * (2 * nRows - 2) - i < s.length())
+                    result += s.charAt((j + 1) * (2 * nRows - 2) - i);
             }
         }
         return result;
