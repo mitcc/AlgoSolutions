@@ -27,6 +27,7 @@ public class ZigZagConversion {
                         result += s.charAt(j * (2 * nRows - 2) + i);
                     if(j * (2 * nRows - 2) + 2 * nRows - 2 - i < s.length())
                         result += s.charAt(j * (2 * nRows - 2) + 2 * nRows - 2 - i);
+                }
             }
         }
         return result;
