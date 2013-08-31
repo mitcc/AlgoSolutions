@@ -54,8 +54,6 @@ public class SymmetricTree {
             return true;
         if(p == null && q != null || p != null && q == null)
             return false;
-        if(p.val != q.val)
-            return false;
-        return isSymmetricHelper(p.left, q.right) && isSymmetricHelper(p.right, q.left);
+        return (p.val == q.val) && isSymmetricHelper(p.left, q.right) && isSymmetricHelper(p.right, q.left);
     }
 }
