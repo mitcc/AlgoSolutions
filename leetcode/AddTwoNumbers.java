@@ -41,11 +41,11 @@ public class AddTwoNumbers {
         ListNode result = new ListNode(0);
         ListNode cur1 = l1, cur2 = l2, head = result;
         while(cur1 != null || cur2 != null) {
-            while(cur1 != null) {
+            if(cur1 != null) {
                 carry += cur1.val;
                 cur1 = cur1.next;
             }
-            while(cur2 != null) {
+            if(cur2 != null) {
                 carry += cur2.val;
                 cur2 = cur2.next;
             }
