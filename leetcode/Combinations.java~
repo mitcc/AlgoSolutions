@@ -30,9 +30,9 @@ public class Combinations {
                 for(ArrayList<Integer> temp : combine(n - 1, k - 1)) {
                     temp.add(i);
                     result.add(temp);
+                    return result;
                 }
             }
-            return result;
         }
     }
 }
