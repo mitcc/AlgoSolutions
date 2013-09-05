@@ -16,7 +16,7 @@
 public class Combinations {
     public ArrayList<ArrayList<Integer>> combine(int n, ink k) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        if(k == 0 || n < k)
+        if(k == 0)
             return result;
         if(k == 1) {
             for(int i = 1; i <= n; i++){
