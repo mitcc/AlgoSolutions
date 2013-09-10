@@ -10,7 +10,7 @@
  *     /     /       \                 \
  *    2     1         2                 3
  */
-public class UniqueBinarySearchTree {
+public class UniqueBinarySearchTrees {
     public int numTrees(int n) {
         int[] result = new int[n + 1];
         result[0] = 1;
