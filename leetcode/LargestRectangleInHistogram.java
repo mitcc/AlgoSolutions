@@ -11,7 +11,7 @@
  * return 10.
  */
 public class LargestRectangleInHistogram {
-    public int largestRectangleArea(int[] height) {// brute force, can not pass the Jadge Large.
+/*  public int largestRectangleArea(int[] height) {// brute force, can not pass the Jadge Large.
         int area = 0;
         for(int i = 0; i < height.length; i++) {
             int min = height[i];
@@ -21,5 +21,23 @@ public class LargestRectangleInHistogram {
             }
         }
         return area;
+    } */
+    
+    public int largestRectangleArea(int[] height) {
+        if(heigth.length == 0)
+            return 0;
+        int i = 0, max = 0;
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(i);
+        while(i < height.length || !stack.isEmpty()) {
+            if(i < height.length && (stack.isEmpty() || height[i] >= height[stack.peek()])) {
+                stack.push(i);
+                i++;
+            } else {
+                int top = stack.pop();
+                max = Math.max(max, height[top] * (stack.isEmpty() ? i : i - stack.peek() - 1));
+            }
+        }
+        return max;
     }
 }
