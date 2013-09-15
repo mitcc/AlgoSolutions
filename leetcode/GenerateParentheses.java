@@ -16,7 +16,6 @@ public class GenerateParentheses {
     public void generateParenthesisHelper(ArrayList<String> result, String subString, int left, int right) {
         if(left == 0 && right == 0) {
             result.add(subString);
-            return ;
         }
         if(left > 0)
             generateParenthesisHelper(result, subString + "(", left - 1, right);
