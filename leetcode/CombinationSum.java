@@ -25,9 +25,8 @@ public class CombinationSum {
 
     public void combinationSumHelper(ArrayList<ArrayList<Integer>> result, ArrayList<Integer> subList, 
             int[] candidates, int target, int sum, int preIndex) {
-        if(sum == target) {
+        if(sum == target) 
             result.add(new ArrayList<Integer>(subList));
-        }
         if(sum < target) {
             for(int i = preIndex; i < candidates.length; i++) {
                 subList.add(candidates[i]);
