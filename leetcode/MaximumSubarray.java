@@ -4,7 +4,7 @@ public class MaximumSubarray {
 	public int maxSubArray(int[] A) {
         // Start typing your Java solution below
         // DO NOT write main() function
-		int max = Integer.MIN_VALUE, sum = 0;
+		int max = A[0], sum = 0;
 		for(int i = 0; i < A.length; i++) {
         	sum += A[i];
         	if(max < sum)
