@@ -1,0 +1,52 @@
+package info.mitcc.leetcode;
+
+public class MaximumSubarray {
+	public int maxSubArray(int[] A) {
+		int max = A[0], sum = 0;
+		for(int i = 0; i < A.length; i++) {
+        	sum += A[i];
+        	if(sum > max)
+        		max = sum;
+            if(sum < 0)
+        		sum = 0;
+        }
+        return max;
+		
+        /**Below is from  wikipedia*/
+/*		int max_so_far = A[0], max_ending_here = A[0];
+		for(int i = 1; i < A.length; i++) {
+			if(max_ending_here < 0)
+				max_ending_here = A[i];
+			else
+				max_ending_here += A[i];
+			if(max_ending_here >= max_so_far)
+				max_so_far = max_ending_here;
+		}
+		return max_so_far;*/
+    }
+}
+
+public class MaximumSubarray {
+    public int maxSubArray(int[] A) {
+        int max = A[0], sum = 0;
+        for(int i = 0; i < A.length; i++) {
+            sum += A[i];
+            max = Math.max(max, sum);
+            sum = sum < 0 ? 0 : sum;
+        }
+        return max;
+    }
+
+    public int maxSubArray(int[] A) {
+        int max_so_far = A[0], max_ending_here = A[0];
+        for(int i = 1; i < A.length; i++) {
+            if(max_ending_here < 0)
+                max_ending_here = A[i];
+            else
+                max_ending_here += A[i];
+            if(max_ending_here >= max_so_far)
+                max_so_far = max_ending_here;
+        }
+        return max_so_far;
+    }
+}
