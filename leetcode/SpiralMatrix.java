@@ -18,7 +18,7 @@ public class SpiralMatrix {
             return result;
         int M = matrix.length, N = matrix[0].length;     
         int small = M < N ? M : N;
-        for(int i = 0; i < small / 2 + small % 2; i++) {
+        for(int i = 0; i < (small + 1) / 2; i++) {
             for(int j  = i; j < N - i; j++) {
                 result.add(matrix[i][j]);
             }
