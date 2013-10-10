@@ -1,6 +1,6 @@
 public class Quicksort {
     public void quicksort(int[] array, int low, int high) {
-        if(low >= high)
+        if(low >= high) 
             return ;
         int i = low - 1;
         for(int j = low; j < high; j++) {
