@@ -34,8 +34,8 @@ public class WordSearch {
         if(s.length() == 1)
             return true;
         board[i][j] = '#';
-        boolean flag = dfs(board, i - 1, j, s.substring(1, s.length())) || dfs(board, i + 1, j, s.substring(1, s.length())) ||
-            dfs(board, i, j - 1, s.substring(1, s.length())) || dfs(board, i, j + 1, s.substring(1, s.length()));
+        boolean flag = dfs(board, i - 1, j, s.substring(1, s.length())) || dfs(board, i + 1, j, s.substring(1, s.length()))
+            || dfs(board, i, j - 1, s.substring(1, s.length())) || dfs(board, i, j + 1, s.substring(1, s.length()));
         board[i][j] = s.charAt(0);
         return flag;
     }
