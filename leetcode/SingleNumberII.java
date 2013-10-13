@@ -6,24 +6,6 @@
  */
 public class SingleNumberII {
 /*  public int singleNumber(int[] A) {
-        int[] bits = new int[32];
-        for(int i = 0; i < A.length; i++) {
-            String bin = Integer.toBinaryString(A[i]);
-            for(int j = bin.length() - 1; j >= 0; j--) {
-                if(bin.charAt(j) == '1') {
-                    bits[31 - j]++;
-                }
-            }
-        }
-        String binary = "";
-        for(int i = 0; i < 32; i++) {
-            binary += (bits[i] % 3 == 0) ? "0" : "1";
-        }
-        return Integer.parseInt(binary, 2);
-    }
-*/
-
-    public int singleNumber(int[] A) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for(int i = 0; i < A.length; i++) {
             map.put(A[i], map.containsKey(A[i]) ? map.get(A[i]) + 1 : 1);
@@ -33,5 +15,31 @@ public class SingleNumberII {
             i++;
         }
         return A[i];
+    }
+
+    public int singleNumber(int[] A) {
+        int[] count = new int[32];
+        int result = 0;
+        for(int i = 0; i < 32; i++) {
+            for(int j = 0; j < A.length; j++) {
+                count[i] += (A[j] >> i) & 1;
+            }
+            count[i] %= 3;
+            result |= count[i] << i;
+        }
+        return result;
+    }
+*/
+
+    public int singleNumber(int[] A) {
+        int one = 0, two = 0, three = 0;
+        for(int i = 0; i < A.length; i++) {
+            two |= one & A[i];
+            one ^= A[i];
+            three = one & two;
+            one &= ~three;
+            two &= ~three;
+        }
+        return one;
     }
 }
