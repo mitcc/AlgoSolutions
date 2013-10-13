@@ -6,7 +6,7 @@
  * 
  */
 public class SingleNumber {
-    public int singleNumber(int[] A) {
+/*  public int singleNumber(int[] A) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for(int i = 0; i < A.length; i++) {
             map.put(A[i], map.containsKey(A[i]) ? map.get(A[i]) + 1 : 1);
@@ -16,5 +16,14 @@ public class SingleNumber {
             i++;
         }
         return A[i];
+    }
+*/
+
+    public int singleNumber(int[] A) {
+        int result = 0;
+        for(int i = 0; i < A.length; i++) {
+            result ^= A[i];
+        }
+        return result;
     }
 }
