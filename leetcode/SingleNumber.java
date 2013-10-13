@@ -7,12 +7,12 @@
  */
 public class SingleNumber {
     public int singleNumber(int[] A) {
-        boolean[] isSingle = new boolean[256];
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for(int i = 0; i < A.length; i++) {
-            isSingle[A[i]] = !isSingle[A[i]];
+            map.put(A[i], map.containsKey(A[i]) ? map.get(A[i]) + 1 : 1);
         }
         int i = 0;
-        while(!isSingle[A[i]]) {
+        while(map.get(A[i]) == 2) {
             i++;
         }
         return A[i];
