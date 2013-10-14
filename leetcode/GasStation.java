@@ -11,19 +11,19 @@
  * The solution is guaranteed to be unique.
  */
 public class GasStation {
-    public int canCompleteCirCuit(int[] gas, int[] cost) {
-        int i = 0;
-        int total = 0;
-        while(i < gas.length) {
-            for(int j = i; j < gas.length; j++) {
-                total += gas[j];
-                int remain = total - cost[j];
-                if(remain < 0)
-                    return -1;
-                else 
-                    total = remain;
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        if(gas == null || cost == null || gas.length != cost.length || gas.length == 0)
+            return -1;
+        int total = 0, remain = 0;
+        int j = -1;
+        for(int i = 0; i < gas.length; i++) {
+            total += gas[i] - cost[i];
+            remain += gas[i] - cost[i];
+            if(remain < 0) {
+                j = i;
+                remain = 0;
             }
-            i++;
         }
+        return total >= 0 ? j + 1 : -1;
     }
 }
