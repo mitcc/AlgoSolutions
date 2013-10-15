@@ -17,7 +17,7 @@
  * X O X X
  */
 public class SurroundedRegions {
-    public void solve(char[][] board) {
+/*  public void solve(char[][] board) {
         if(board.length == 0)
             return ;
         for(int i = 0; i < board[0].length; i++) {
@@ -46,5 +46,54 @@ public class SurroundedRegions {
         dfs(board, i, j - 1);
         dfs(board, i - 1, j);
         dfs(board, i + 1, j);
+    }
+*/
+
+    int m, n;
+    char[][] board;
+    Queue<Integer> queue = new LinkedList<Integer>();
+    
+    public void fill(int x, int y) {
+        if(x < 0 || x >= m || y < 0 || y >= n || board[x][y] != 'O')
+            return;
+        queue.offer(x * m + y);
+        board[x][y] = 'S';
+    }
+    
+    public void bfs(int x, int y) {
+        fill(x, y);
+        while(!queue.isEmpty()) {
+            int cur = queue.poll();
+            int i = cur / n;
+            int j = cur % n;
+            fill(i - 1, j);
+            fill(i + 1, j);
+            fill(i, j - 1);
+            fill(i, j + 1);
+        }
+    }
+
+    public void solve(char[][] board) {
+        if(board == null || board.length == 0)
+            return;
+        this.board = board;
+        m = board.length;
+        n = board[0].length;
+        for(int j = 0; j < n; j++) {
+            bfs(0, j);
+            bfs(m - 1, j);
+        }
+        for(int i = 1; i < m - 1; i++) {
+            bfs(i, 0);
+            bfs(i, n - 1);
+        }
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(board[i][j] == 'O')
+                    board[i][j] = 'X';
+                else if(board[i][j] == 'S')
+                    board[i][j] = 'O';
+            }
+        }
     }
 }
