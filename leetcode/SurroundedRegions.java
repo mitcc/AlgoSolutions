@@ -52,24 +52,24 @@ public class SurroundedRegions {
     int m, n;
     char[][] board;
     Queue<Integer> queue = new LinkedList<Integer>();
-    
+
     public void fill(int x, int y) {
-        if(x < 0 || x >= m || y < 0 || y >= n || board[x][y] != 'O')
+        if(x < 0 || x > m - 1 || y < 0 || y > n - 1 || board[x][y] != 'O')
             return;
         queue.offer(x * m + y);
         board[x][y] = 'S';
     }
-    
+
     public void bfs(int x, int y) {
         fill(x, y);
         while(!queue.isEmpty()) {
             int cur = queue.poll();
             int i = cur / n;
             int j = cur % n;
-            fill(i - 1, j);
             fill(i + 1, j);
-            fill(i, j - 1);
+            fill(i - 1, j);
             fill(i, j + 1);
+            fill(i, j - 1);
         }
     }
 
@@ -79,13 +79,13 @@ public class SurroundedRegions {
         this.board = board;
         m = board.length;
         n = board[0].length;
-        for(int j = 0; j < n; j++) {
-            bfs(0, j);
-            bfs(m - 1, j);
-        }
-        for(int i = 1; i < m - 1; i++) {
+        for(int i = 0; i < m; i++) {
             bfs(i, 0);
             bfs(i, n - 1);
+        }
+        for(int j = 1; j < n - 1; j++) {
+            bfs(0, j);
+            bfs(m - 1, j);
         }
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
@@ -96,4 +96,5 @@ public class SurroundedRegions {
             }
         }
     }
+
 }
