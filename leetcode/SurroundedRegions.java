@@ -56,7 +56,7 @@ public class SurroundedRegions {
     public void fill(int x, int y) {
         if(x < 0 || x > m - 1 || y < 0 || y > n - 1 || board[x][y] != 'O')
             return;
-        queue.offer(x * m + y);
+        queue.offer(x * n + y);
         board[x][y] = 'S';
     }
 
