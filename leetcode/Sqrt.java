@@ -4,7 +4,7 @@
  */
 
 public class Sqrt {
-    public int sqrt(int x) {
+/*  public int sqrt(int x) {
         if(x < 100) {
             int i = 0; 
             while(i * i <= x) {
@@ -56,7 +56,7 @@ public class Sqrt {
         }
         return (start + end) / 2;
     }
-
+*/
 
     public int sqrt(int x) {
         if(x < 0)
