@@ -10,7 +10,7 @@
  * Could you devise a constant space solution?
  */
 public class SetMatrixZeroes {
-    public void setZeroes(int[][] matrix) {
+/*  public void setZeroes(int[][] matrix) {
         Queue<Integer> queue = new LinkedList<Integer>();
         int m = matrix.length;
         int n = matrix[0].length;
@@ -30,6 +30,60 @@ public class SetMatrixZeroes {
             } 
             for(int j = 0; j < n; j++) {
                 matrix[row][j] = 0;
+            }
+        }
+    }
+*/
+    
+    
+
+    public void setZeroes(int[][] matrix) {
+        boolean isRowZero = false;
+        boolean isColZero = false;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        for(int i = 0; i < m; i++) {
+            if(matrix[i][0] == 0) {
+                isColZero = true;
+                break;
+            }
+        }
+        for(int j = 0; j < n; j++) {
+            if(matrix[0][j] == 0) {
+                isRowZero = true;
+                break;
+            }
+        }
+        for(int i = 1; i < m; i++) {
+            for(int j = 1; j < n; j++) {
+                if(matrix[i][j] == 0) {
+                    matrix[0][j] = 0;
+                    matrix[i][0] = 0;
+                }
+            }
+        }
+        for(int i = 1; i < m; i++) {
+            if(matrix[i][0] == 0) {
+                for(int j = 0; j < n; j++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        for(int j = 0; j < n; j++) {
+            if(matrix[0][j] == 0) {
+                for(int i = 0; i < m; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        if(isRowZero) {
+            for(int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
+            }
+        }
+        if(isColZero) {
+            for(int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
             }
         }
     }
