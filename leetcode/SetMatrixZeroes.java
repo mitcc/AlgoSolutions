@@ -35,8 +35,6 @@ public class SetMatrixZeroes {
     }
 */
     
-    
-
     public void setZeroes(int[][] matrix) {
         boolean isRowZero = false;
         boolean isColZero = false;
