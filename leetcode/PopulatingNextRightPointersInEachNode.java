@@ -6,14 +6,16 @@
  *       TreeLinkNode *right;
  *       TreeLinkNode *next;
  *     }
- * Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+ * Populate each next pointer to point to its next right node. If there is no next right node, 
+ * the next pointer should be set to NULL.
 
  * Initially, all next pointers are set to NULL.
 
  * Note:
 
  * You may only use constant extra space.
- * You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).
+ * You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and 
+ * every parent has two children).
  * For example,
  * Given the following perfect binary tree,
  *          1
@@ -39,6 +41,25 @@
  */
 public class PopulatingNextRightPointersInEachNode {
     public void connect(TreeLinkNode root) {
-        
+        if(root == null)
+            return;
+        Queue<TreeLinkNode> curLevel = new LinkedList<TreeLinkNode>();
+        Queue<TreeLinkNode> nextLevel = new LinkedList<TreeLinkNode>();
+        curLevel.offer(root);
+        while(!curLevel.isEmpty()) {
+            TreeLinkNode curNode = curLevel.poll();
+            if(!curLevel.isEmpty())
+                curNode.next = curLevel.peek();
+            else
+                curNode.next = null;
+            if(curNode.left != null)
+                nextLevel.offer(curNode.left);
+            if(curNode.right != null)
+                nextLevel.offer(curNode.right);
+            if(curLevel.isEmpty()) { 
+                curLevel = nextLevel;
+                nextLevel = new LinkedList<TreeLinkNode>();
+            }
+        }
     }
 }
