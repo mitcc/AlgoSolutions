@@ -40,7 +40,7 @@
  * }
  */
 public class PopulatingNextRightPointersInEachNode {
-    public void connect(TreeLinkNode root) {
+/*  public void connect(TreeLinkNode root) {
         if(root == null)
             return;
         Queue<TreeLinkNode> curLevel = new LinkedList<TreeLinkNode>();
@@ -60,6 +60,34 @@ public class PopulatingNextRightPointersInEachNode {
                 curLevel = nextLevel;
                 nextLevel = new LinkedList<TreeLinkNode>();
             }
+        }
+    }
+
+
+    public void connect(TreeLinkNode root) {
+        if(root == null || root.left == null)
+            return;
+        root.left.next = root.right;
+        root.right.next = root.next != null ? root.next.left : null;
+        connect(root.left);
+        connect(root.right);
+    }
+*/
+
+
+    public void connect(TreeLinkNode root) {
+        if(root == null)
+            return;
+        while(root != null) {
+            TreeLinkNode cur = root;
+            while(cur != null) {
+                if(cur.left != null)
+                    cur.left.next = cur.right;
+                if(cur.right != null && cur.next != null)
+                    cur.right.next = cur.next.left;
+                cur = cur.next;
+            }
+            root = root.left;
         }
     }
 }
