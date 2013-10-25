@@ -28,24 +28,23 @@ public class SearchForARange {
 /*    O(log n)    */
     public int[] searchRange(int[] A, int target) {
         int[] res = new int[2];
-        int low = 0, high = A.length - 1;
-        while(low < high) {
-            int mid = low + (high - low) / 2;
-            if(A[mid] >=target)
-                high = (A[mid] == target) ? mid : mid - 1;
-            else
+        int low = 0, high = A.length - 1, mid = 0;
+        while(low <= high) {
+            mid = low + (high - low) / 2;
+            if(A[mid] < target)
                 low = mid + 1;
+            else
+                high = mid - 1;
         }
         res[0] = (A[low] == target) ? low : -1;
 
-        low = 0;
         high = A.length - 1;
-        while(low < high) {
-            int mid = low + (high - low + 1) / 2;
-            if(A[mid] <= target) 
-                low = (A[mid] == target) ? mid : mid + 1;
-            else
+        while(low <= high) {
+            mid = low + (high - low) / 2;
+            if(A[mid] > target) 
                 high = mid - 1;
+            else
+                low = mid + 1;
         }
         res[1] = (A[high] == target) ? high : -1;
         return res;
