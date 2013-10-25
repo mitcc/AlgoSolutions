@@ -36,7 +36,7 @@ public class SearchForARange {
             else
                 high = mid - 1;
         }
-        res[0] = (A[low] == target) ? low : -1;
+        res[0] = (low >= A.length || A[low] != target) ? -1 : low;
 
         high = A.length - 1;
         while(low <= high) {
@@ -46,7 +46,7 @@ public class SearchForARange {
             else
                 low = mid + 1;
         }
-        res[1] = (A[high] == target) ? high : -1;
+        res[1] = (high < 0 || A[high] != target) ? -1 : high; 
         return res;
     }
 }
