@@ -38,30 +38,31 @@
  */
 public class ScrambleString {
 /*  public boolean isScramble(String s1, String s2) {
-        if(s1.length() != s2.length())
+        int N = s1.length();
+        if(s2.length() != N)
             return false;
-        int[] chars = new int[26];
-        for(int i = 0; i < s1.length(); i++) {
-            chars[s1.charAt(i) - 'a']++;
+        boolean[][][] dp = new boolean[N][N][N];
+        for(int i = 0; i < N; i++) {
+            for(int j = 0; j < N; j++) {
+                dp[i][j][0] = s1.charAt(i) == s2.charAt(j);
+            }
         }
-        for(int i = 0; i < s2.length(); i++) {
-            chars[s2.charAt(i) - 'a']--;
+        for(int len = 1; len < N; len++) {
+            for(int i = 0; i + len < N; i++) {
+                for(int j = 0; j + len < N; j++) {
+                    for(int k = 0; k < len; k++) {
+                        if(dp[i][j][k] && dp[i + k + 1][j + k + 1][len - 1 - k] 
+                                || dp[i][j + len - k][k] && dp[i + k + 1][j][len - 1 - k]) {
+                            dp[i][j][len] = true;
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        for(int i = 0; i < 26; i++) {
-            if(chars[i] != 0)
-                return false;
-        }
-        if(s1.length() == 1)
-            return true;
-        for(int i = 1; i < s1.length(); i++) {
-            if(isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i))
-                    || isScramble(s1.substring(0, i), s2.substring(s2.length() - i)) 
-                    && isScramble(s1.substring(i), s2.substring(0, s2.length() - i)))
-                return true;
-        }
-        return false;
+        return dp[0][0][N - 1];
     }
-*/
+*/   
 
     public boolean isScramble(String s1, String s2) {
         if(s1 == null || s2 == null || s1.length() != s2.length()) 
