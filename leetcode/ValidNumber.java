@@ -30,21 +30,19 @@ public class ValidNumber {
             else if(s.charAt(k) == 'e') {
                 if(hasE || k == s.length() - 1 || !hasNum || k == 0 || k == s.length() - 1)
                     return false;
+                hasE = true;
             }
             else if(s.charAt(k) == '.') {
-                if(hasE || hasDot || s.length() == 1 || k == 0 && s.length() > 1 && s.charAt(k + 1) == 'e' || (k > 0 && k == s.length() - 1 && (s.charAt(k - 1) == '-' || s.charAt(k - 1) == '+')) || (k < s.length() - 1 && (s.charAt(k + 1) == '-' || s.charAt(k + 1) == '+')))
+                if(hasE || hasDot || k == s.length() - 1 && !hasNum
+                        || k < s.length() - 1 && (s.charAt(k + 1) == '+' || s.charAt(k + 1) == '-'))
                     return false;
-            }
-            else if(s.charAt(k) - '0' > 9 || s.charAt(k) - '0' < 0)
-                return false;
-            if(s.charAt(k) - '0' >= 0 && s.charAt(k) - '0' <= 9)
-                hasNum = true;
-            if(s.charAt(k) == '.')
                 hasDot = true;
-            if(s.charAt(k) == 'e')
-                hasE = true;
+            }
+            else if(s.charAt(k) - '0' >= 0 && s.charAt(k) - '0' <= 9)
+                hasNum = true;
+            else
+                return false;
         }
         return true;
-    }
-    
+    }       
 }
