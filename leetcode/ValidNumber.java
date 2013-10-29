@@ -13,9 +13,7 @@
 public class ValidNumber {
     public boolean isNumber(String s) {
         int i = 0, j = s.length() - 1;
-        while(i < j) {
-            if(s.charAt(i) != ' ' && s.charAt(j) != ' ')
-                break;
+        while(i < j && (s.charAt(i) == ' ' || s.charAt(j) == ' ')) {
             if(s.charAt(i) == ' ')
                 i++;
             if(s.charAt(j) == ' ')
