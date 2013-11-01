@@ -7,16 +7,15 @@
  */
 public class TrappingRainWater {
     public int trap(int[] A) {
-        int[] left = new int[A.length];
-        int[] right = new int[A.length];
+        int[] lMax = new int[A.length], rMax = new int[A.length];
         for(int i = 0; i < A.length; i++) {
-            left[i] = (i == 0) ? A[i] : Math.max(left[i - 1], A[i]);
-            right[A.length - 1 - i] = (i == 0) ? A[A.length - 1] : Math.max(right[A.length - i], A[A.length - 1 - i]);
+            lMax[i] = Math.max(lMax[i == 0 ? i : i - 1], A[i]); 
+            rMax[A.length - 1 - i] = Math.max(rMax[A.length - i - (i == 0 ? 1 : 0)], A[A.length - 1 - i]);
         }
-        int result = 0; 
-        for(int i = 0; i < A.length; i++) {
-            result += Math.min(left[i], right[i]) - A[i];
+        int res = 0;
+        for(int i = 1; i < A.length - 1; i++) {
+            res += Math.min(lMax[i], rMax[i]) - A[i];
         }
-        return result;
-    }
+        return res;
+    } 
 }
