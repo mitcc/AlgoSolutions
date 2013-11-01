@@ -6,7 +6,7 @@
  * Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
  */
 public class TrappingRainWater {
-    public int trap(int[] A) {
+    public int trap_1(int[] A) {
         int[] lMax = new int[A.length], rMax = new int[A.length];
         for(int i = 0; i < A.length; i++) {
             lMax[i] = Math.max(lMax[i == 0 ? i : i - 1], A[i]); 
@@ -18,4 +18,28 @@ public class TrappingRainWater {
         }
         return res;
     } 
+
+
+    public int trap_2(int[] A) {
+        int res = 0, i = 0, j = A.length - 1;
+        while(i < j) {
+            int k;
+            if(A[i] < A[j]) {
+                k = i + 1;
+                while(A[i] > A[k]) {
+                    res += A[i] - A[k];
+                    k++;
+                }
+                i = k;
+            } else {
+                k = j - 1;
+                while(A[j] > A[k]) {
+                    res += A[j] - A[k];
+                    k--;
+                }
+                j = k;
+            }
+        }
+        return res;
+    }
 }
