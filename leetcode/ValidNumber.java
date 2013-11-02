@@ -12,14 +12,9 @@
  */
 public class ValidNumber {
     public boolean isNumber(String s) {
-        int i = 0, j = s.length() - 1;
-        while(i < j && (s.charAt(i) == ' ' || s.charAt(j) == ' ')) {
-            if(s.charAt(i) == ' ')
-                i++;
-            if(s.charAt(j) == ' ')
-                j--;
-        }
-        s = s.substring(i, j + 1);
+        s = s.trim();
+        if(s.equals(""))
+           return false; 
         boolean hasDot = false, hasE = false, hasNum = false;
         for(int k = 0; k < s.length(); k++) {
             if(s.charAt(k) == '-' || s.charAt(k) == '+') {
