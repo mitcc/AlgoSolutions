@@ -17,8 +17,7 @@
  */
 public class LinkedListCycleII {
     public ListNode findCycle(ListNode head) {
-        /* If the list has a cycle, return the node where the two cursors meet
-         * each other. If there is no cycle, return nulll*/
+        /* If the list has a cycle, return the node where the cycle starts with. If there is no cycle, return null*/
         ListNode cur1 = head, cur2 = head;
         while(cur2 != null && cur2.next != null) {
             cur1 = cur1.next;
