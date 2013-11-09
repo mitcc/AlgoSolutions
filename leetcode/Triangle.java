@@ -21,8 +21,7 @@ import java.util.ArrayList;
 
 public class Triangle {
 	public int minimumTotal(ArrayList<ArrayList<Integer>> triangle) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
+
         int row = triangle.size();
         int col = triangle.get(row - 1).size();
         int[][] dp = new int[row][];
