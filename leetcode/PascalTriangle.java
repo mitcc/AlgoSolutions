@@ -1,33 +1,33 @@
-package info.mitcc.leetcode;
+/*
+ * Given numRows, generate the first numRows of Pascal's triangle.
 
-import java.util.ArrayList;
+ * For example, given numRows = 5,
+ * Return
 
+ * [
+ *      [1],
+ *     [1,1],
+ *    [1,2,1],
+ *   [1,3,3,1],
+ *  [1,4,6,4,1]
+ * ]
+ */
 public class PascalTriangle {
-	public ArrayList<ArrayList<Integer>> generate(int numRows) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+    public ArrayList<ArrayList<Integer>> generate(int numRows) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if(numRows <= 0)
-        	return result;
-        ArrayList<Integer> start = new ArrayList<Integer>();
-        start.add(1);
-        result.add(start);
-        for(int i = 1; i < numRows; i++) {
-        	ArrayList<Integer> pre = result.get(i - 1);
-        	ArrayList<Integer> next = new ArrayList<Integer>();
-        	next.add(1);
-        	for(int j = 1; j < i; j++) {
-        		int temp = pre.get(j - 1) + pre.get(j);
-        		next.add(temp);
-        	}
-        	next.add(1);
-        	result.add(next);
+            return res;
+        ArrayList<Integer> first = new ArrayList<Integer>();
+        first.add(1);
+        res.add(first);
+        for(int i = 2; i <= numRows; i++) {
+            ArrayList<Integer> prev = res.get(i - 2), next = new ArrayList<Integer>();
+            next.add(1);
+            for(int j = 1; j < i - 1; j++) 
+                next.add(prev.get(j - 1) + prev.get(j));
+            next.add(1);
+            res.add(next);
         }
-        return result;
+        return res;
     }
-	
-	public static void main(String[] args) {
-		ArrayList<ArrayList<Integer>> list = new PascalTriangle().generate(5);
-		System.out.println(list);
-	}
 }
