@@ -13,7 +13,7 @@
  * }
  */
 public class SortList {
-    // Runtime Error, to be debuged!!! 
+    // Runtime Error, to be debugged!!! 
     public ListNode sortList(ListNode head) {
         if(head == null || head.next == null)
             return head;
