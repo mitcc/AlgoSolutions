@@ -6,15 +6,13 @@
  * not engage in multiple transactions at the same time (ie, you must sell the stock before 
  * you buy again).
  */
-package info.mitcc.leetcode;
-
 public class BestTimeToBuyAndSellStockII {
-	public int maxProfit(int[] prices) {
-        int result = 0;
+    public int maxProfit(int[] prices) {
+        int res = 0;
         for(int i = 1; i < prices.length; i++) {
             if(prices[i] > prices[i - 1])
-                result += prices[i] - prices[i - 1];
+                res += prices[i] - prices[i - 1];
         }
-        return result;  
+        return res;
     }
 }
