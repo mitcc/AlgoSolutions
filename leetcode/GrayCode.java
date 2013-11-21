@@ -10,9 +10,8 @@
  * 11 - 3
  * 10 - 2
  */
-package info.mitcc.leetcode;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class GrayCode {
 /*	public ArrayList<Integer> grayCode(int n) {
@@ -76,15 +75,11 @@ public class GrayCode {
         prevList.addAll(list);
         return prevList;
     }*/
-	
-	public ArrayList<Integer> grayCode(int n) {
-		int len = 1 << n;
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for(int i = 0; i < len; i++)
-			list.add(i ^ (i / 2));
-		return list;
-	}
-	public static void main(String[] args) {
-		System.out.println(new GrayCode().grayCode(4));
-	}
+
+    public ArrayList<Integer> grayCode(int n) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        for(int i = 0; i < 1 << n; i++)
+            res.add(i ^ (i >> 1));
+        return res;
+    }    
 }
