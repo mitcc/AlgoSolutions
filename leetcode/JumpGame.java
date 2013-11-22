@@ -10,20 +10,16 @@
 
  * A = [3,2,1,0,4], return false.
  */
-package info.mitcc.leetcode;
-
 public class JumpGame {
-	public boolean canJump(int[] A) {
-		int maxIndex = 0;
-        for(int i = 0; i < A.length; i++) {
-            if(maxIndex >= i) {
-                maxIndex = Math.max(maxIndex, i + A[i]);
-                if(maxIndex >= A.length - 1)
-                    break;
-            } else {
+    public boolean canJump(int[] A) {
+        int maxIndex = 0;
+        for(int i = 0; i < A.length - 1; i++) {
+            maxIndex = Math.max(A[i] + i, maxIndex);
+            if(maxIndex == i)
                 return false;
-            }
+            else if(maxIndex >= A.length - 1)
+                return true;
         }
-        return true;
-	}
+        return maxIndex >= A.length - 1;
+    }
 }
