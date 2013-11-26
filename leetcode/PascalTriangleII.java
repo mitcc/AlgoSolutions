@@ -1,27 +1,41 @@
-package info.mitcc.leetcode;
+/*
+ * Given an index k, return the kth row of the Pascal's triangle.
 
-import java.util.ArrayList;
-import java.util.Scanner;
+ * For example, given k = 3,
+ * Return [1,3,3,1].
 
+ * Note:
+ * Could you optimize your algorithm to use only O(k) extra space? 
+ */
 public class PascalTriangleII {
-	public ArrayList<Integer> getRow(int rowIndex) {
-		if(rowIndex < 0)
-			throw new IllegalArgumentException();
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		list.add(1);
-		if(rowIndex == 0)
-			return list;
-		else {
-			ArrayList<Integer> tempList = this.getRow(rowIndex - 1);
-			for(int i = 1; i < rowIndex; i++)
-				list.add(tempList.get(i - 1) + tempList.get(i));
-			list.add(1);
-			return list;
-		}
+/**************************** updated 2013/11/26 *********************/
+    public ArrayList<Integer> getRow(int rowIndex) {
+        ArrayList<Integer> res = new ArrayList<Integer>(), temp = new ArrayList<Integer>();
+        res.add(1);
+        temp.add(1);
+        temp.add(1);
+        for(int i = 1; i <= rowIndex; i++) {
+            res = new ArrayList<Integer>();
+            res.add(1);
+            for(int j = 0; j <= i - 2; j++) 
+                res.add(temp.get(j) + temp.get(j + 1));
+            res.add(1);
+            temp = res;
+        }
+        return res;
     }
-	
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		System.out.println(new PascalTriangleII().getRow(in.nextInt()));
-	}
+
+/*********************************************************************/
+
+    public ArrayList<Integer> getRow(int rowIndex) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        res.add(1);
+        if(rowIndex > 0) {
+            ArrayList<Integer> temp = getRow(rowIndex - 1);
+            for(int i = 0; i <= rowIndex - 2; i++) 
+                res.add(temp.get(i) + temp.get(i + 1));
+            res.add(1);
+        }
+        return res;
+    }
 }
