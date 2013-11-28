@@ -40,4 +40,35 @@ public EvaluateReversePolishNotation {
         }
         return evalRPN(temp);
     }
+
+
+
+/***************************** not finished, to be constructed *************************/
+
+    public int calculate(List<String> list, int i) {
+        if(list.get(i).equals("+"))
+            return Integer.parseInt(list.get(i - 2)) + Integer.parseInt(list.get(i - 1));
+        if(list.get(i).equals("-"))
+            return Integer.parseInt(list.get(i - 2)) - Integer.parseInt(list.get(i - 1));
+        if(list.get(i).equals("*"))
+            return Integer.parseInt(list.get(i - 2)) * Integer.parseInt(list.get(i - 1));
+        else 
+            return Integer.parseInt(list.get(i - 2)) / Integer.parseInt(list.get(i - 1));
+    }
+
+    public int evalRPN(String[] tokens) {
+        List<String> list = Arrays.asList(tokens);
+        int i = 0;
+        while(list.size() != 1) {
+            while(!list.get(i).equals("+") && !list.get(i).equals("-") && 
+                    !list.get(i).equals("*") && !list.get(i).equals("/")) {
+                i++;
+            }
+            list.set(i - 2, "" + calculate(list, i));
+            list.remove(i); // the remove() method is wrong, to be corrected!!!
+            list.remove(i - 1);
+            i = i - 1;
+        }
+        return Integer.parseInt(list.get(0));
+    }
 }
