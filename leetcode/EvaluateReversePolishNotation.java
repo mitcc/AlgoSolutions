@@ -41,8 +41,6 @@ public EvaluateReversePolishNotation {
         return evalRPN(temp);
     }
 
-
-
 /***************************** not finished, to be constructed *************************/
 
     public int calculate(List<String> list, int i) {
