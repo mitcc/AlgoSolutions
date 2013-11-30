@@ -28,35 +28,19 @@ Sample Output
 import java.util.*;
 
 public class P115 {
-/*    public static void day(int n, int m) {
-        int[] month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        if(n < 0 || n > month[m - 1] || m < 0 || m > 12) 
-            System.out.println("Impossible");
-        else {
-            int diff = 21, now = n + 350;
-            for(int i = 1; i <= 9; i++) 
-                diff += month[i - 1];
-            for(int i = 1; i < m; i++) 
-                now += month[i - 1];
-            System.out.println((now - diff + 6) % 7 + 1);
-        }
-    }
-*/
-
-    public static void day(int n, int m) {
-        int[] month = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        if(n < 0 || n > month[m - 1] || m < 0 || m > 12) 
-            System.out.println("Impossible");
-        else {
-            int now = n;
-            for(int i = 1; i < m; i++) 
-                now += month[i - 1];
-            System.out.println((now + 6) % 7 + 1);
-        }
-    }
-
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        day(in.nextInt(), in.nextInt());
+        int n = in.nextInt();
+        int m = in.nextInt();
+        Calendar calendar = new GregorianCalendar(2001, m - 1, n);
+        if(calendar.get(Calendar.YEAR) != 2001 || 
+                calendar.get(Calendar.MONTH) != m - 1 || 
+                calendar.get(Calendar.DAY_OF_MONTH) != n) 
+            System.out.println("Impossible");
+        else {
+            int res = calendar.get(Calendar.DAY_OF_WEEK);
+            res = res == 1 ? 7 : res - 1;
+            System.out.println(res);
+        }
     }
 }
