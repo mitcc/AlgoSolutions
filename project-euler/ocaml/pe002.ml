@@ -13,5 +13,12 @@ let rec sum_of_even_fib acc a b limit =
   else if b mod 2 = 0 then sum_of_even_fib (acc + b) b (a + b) limit
   else sum_of_even_fib acc b (a + b) limit
 
+let rec fold acc a b limit =
+  if b >= limit then acc
+  else fold (acc + b) b (a + 4 * b) limit
+
 let () =
   Format.printf "%d\n" (sum_of_even_fib 0 1 1 4000000)
+
+let () =
+  Format.printf "%d\n" (fold 0 0 2 4000000)
