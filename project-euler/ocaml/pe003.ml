@@ -6,8 +6,6 @@
 
 let rec div_all n x = if n mod x <> 0 then n else div_all (n / x) x
 
-let max a b = if a > b then a else b
-
 let rec fold result low high =
     if low >= high then max result high
     else if high mod low = 0 then fold (max result low) (low + 1) (div_all high low)
