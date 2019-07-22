@@ -11,3 +11,10 @@
  * Find the difference between the sum of the squares of the first one hundred
  * natural numbers and the square of the sum.
  *)
+
+let rec f result low high =
+  if low >= high then result
+  else f (result + high * high * (high - 1)) low (high - 1)
+
+let () =
+  Format.printf "%d\n" (f 0 1 100)
