@@ -1,3 +1,6 @@
+# work in progress directory
+wip/
+
 # OCaml ignore start #
 *.annot
 *.cmo
