@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MergeSort {
 
     public void mergeSort(int[] array, int low, int high) {
@@ -7,7 +9,7 @@ public class MergeSort {
         mergeSort(array, low, mid);
         mergeSort(array, mid + 1, high);
         int[] firstHalf = Arrays.copyOfRange(array, low, mid + 1);
-        int i = low; 
+        int i = low;
         int j = mid + 1;
         int k = low;
         while (i <= mid && j <= high) {

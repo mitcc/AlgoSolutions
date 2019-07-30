@@ -1,10 +1,10 @@
 public class Library {
 
-    public int gcd(int a, int b) {
+    public static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
     }
 
-    public int gcd(int a, int b) {
+    public static int gcd1(int a, int b) {
         while (b != 0) {
             int tmp = a;
             a = b;
@@ -13,7 +13,7 @@ public class Library {
         return a;
     }
 
-    public int log2(int a) {
+    public static int log2(int a) {
         int result = 0;
         while (a >= 2) {
             result++;
@@ -23,7 +23,7 @@ public class Library {
     }
 
     // add two integer with bit manipulation
-    public int add(int a, int b) {
+    public static int add(int a, int b) {
         int sum;
         int carry;
         do {
